@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Oak_Seed_SO
   m_EditorClassIdentifier: Assembly-CSharp::SeedDataSO
   seedName: OakSeed
-  baseGrowthTime: 11
-  waterTolerance: 2
+  baseGrowthTime: 180
+  waterMarginError: 1
   recommendedSoil: {fileID: 11400000, guid: ae8179cbcd61e6f4b9bab073783a5e35, type: 2}
   seedRequiredWater: 10
   germinatingRequiredWater: 10
   growingRequiredWater: 10
-  seedPrefab: {fileID: 6208110011841838250, guid: 5bf0bd447da2c044297d2da62f585c7d, type: 3}
-  germinatingPrefab: {fileID: 6208110011841838250, guid: 369d0142c9673a140ae99f5f6de58f2b, type: 3}
-  growingPrefab: {fileID: 6208110011841838250, guid: 55bd5a78f1d30b543b5e47e065ebeb65, type: 3}
-  readyPrefab: {fileID: 6208110011841838250, guid: a40cc747550a37643aa3fa7d8f3bd880, type: 3}
+  seedModel: {fileID: 6208110011841838250, guid: 5bf0bd447da2c044297d2da62f585c7d, type: 3}
+  germinatingModel: {fileID: 6208110011841838250, guid: 369d0142c9673a140ae99f5f6de58f2b, type: 3}
+  growingModel: {fileID: 6208110011841838250, guid: 55bd5a78f1d30b543b5e47e065ebeb65, type: 3}
+  saplingPrefab: {fileID: 6208110011841838250, guid: a40cc747550a37643aa3fa7d8f3bd880, type: 3}

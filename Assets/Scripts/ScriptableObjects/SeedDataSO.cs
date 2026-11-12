@@ -9,26 +9,24 @@ public class SeedDataSO : ScriptableObject
     [Header("Status")]
     [Min(1)]
     public float baseGrowthTime = 120f;
-    public float waterTolerance = 2f;
+    public float waterMarginError = 2f;
     public SoilDataSO recommendedSoil;
 
     [Header("Água por Estágio")]
     [Min(0)]
     public float seedRequiredWater = 10f;
-
     [Min(0)]
     public float germinatingRequiredWater = 10f;
-
     [Min(0)]
     public float growingRequiredWater = 10f;
 
     [Header("Estágios Visuais")]
-    public GameObject seedPrefab;
-    public GameObject germinatingPrefab;
-    public GameObject growingPrefab;
+    public GameObject seedModel;
+    public GameObject germinatingModel;
+    public GameObject growingModel;
 
     [Header("Resultado")]
-    public GameObject readyPrefab;
+    public GameObject saplingPrefab;
 
     // MUDANÇA: antes o switch por estágio existia em dois lugares (PlantingArea para a
     // água e PlantingAreaVisual para o prefab). Como os dados estão aqui, as
@@ -40,16 +38,16 @@ public class SeedDataSO : ScriptableObject
         switch (state)
         {
             case PlantGrowthState.Seed:
-                return seedPrefab;
+                return seedModel;
 
             case PlantGrowthState.Germinating:
-                return germinatingPrefab;
+                return germinatingModel;
 
             case PlantGrowthState.Growing:
-                return growingPrefab;
+                return growingModel;
 
             case PlantGrowthState.Ready:
-                return readyPrefab;
+                return saplingPrefab;
 
             default:
                 return null;

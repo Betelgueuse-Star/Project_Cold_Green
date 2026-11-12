@@ -198,7 +198,7 @@ public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractab
     private WaterStatus CheckWater()
     {
         float requiredWater = plantedSeedData.GetRequiredWater(currentState);
-        float tolerance = plantedSeedData.waterTolerance;
+        float tolerance = plantedSeedData.waterMarginError;
 
         if (currentWater < requiredWater - tolerance)
             return WaterStatus.TooLittle;

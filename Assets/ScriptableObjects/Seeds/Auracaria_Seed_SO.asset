@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Auracaria_Seed_SO
   m_EditorClassIdentifier: Assembly-CSharp::SeedDataSO
   seedName: AuracariaSeed
-  baseGrowthTime: 100
-  waterTolerance: 2
+  baseGrowthTime: 220
+  waterMarginError: 3
   recommendedSoil: {fileID: 11400000, guid: 6953746baa99c834cb6f57a8c19cd0f3, type: 2}
   seedRequiredWater: 10
   germinatingRequiredWater: 10
   growingRequiredWater: 10
-  seedPrefab: {fileID: 3833275308282590100, guid: e65c40dbc0cac8049926b4b6ff760cd4, type: 3}
-  germinatingPrefab: {fileID: 4942341748577403456, guid: d80873da68f4aee499f198ddcc7c65c1, type: 3}
-  growingPrefab: {fileID: 4942341748577403456, guid: 78ac8d25fbf355c47985850520c559d1, type: 3}
-  readyPrefab: {fileID: 6208110011841838250, guid: cc0686efbdb06074cb5e07758f5ef9f7, type: 3}
+  seedModel: {fileID: 6208110011841838250, guid: 732c9d7396f546249b11d736ca17922d, type: 3}
+  germinatingModel: {fileID: 3833275308282590100, guid: e65c40dbc0cac8049926b4b6ff760cd4, type: 3}
+  growingModel: {fileID: 4942341748577403456, guid: d80873da68f4aee499f198ddcc7c65c1, type: 3}
+  saplingPrefab: {fileID: 6208110011841838250, guid: cc0686efbdb06074cb5e07758f5ef9f7, type: 3}
