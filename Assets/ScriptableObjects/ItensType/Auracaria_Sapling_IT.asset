@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Auracaria_Sapling_IT
   m_EditorClassIdentifier: Assembly-CSharp::ItemTypeSO
   itemPrefab: {fileID: 6208110011841838250, guid: cc0686efbdb06074cb5e07758f5ef9f7, type: 3}
-  itemName: AuracariaSapling
+  itemName: Auracaria Sapling
   itemPrice: 5

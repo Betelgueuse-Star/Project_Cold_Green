@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Base_SoilBag_IT
   m_EditorClassIdentifier: Assembly-CSharp::ItemTypeSO
   itemPrefab: {fileID: 6208110011841838250, guid: a725efecf55f6bf4db31732a9dd8fb64, type: 3}
-  itemName: BaseSoil
+  itemName: Base SoilBag
   itemPrice: 3

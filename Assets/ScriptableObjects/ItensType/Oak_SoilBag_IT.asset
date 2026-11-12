@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Oak_SoilBag_IT
   m_EditorClassIdentifier: Assembly-CSharp::ItemTypeSO
   itemPrefab: {fileID: 6208110011841838250, guid: d4d57b9dc7d40c34c8c985a5e496b198, type: 3}
-  itemName: OakSoil
+  itemName: Oak SoilBag
   itemPrice: 5

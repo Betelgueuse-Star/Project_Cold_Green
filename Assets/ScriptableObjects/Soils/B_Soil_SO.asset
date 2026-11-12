@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0378d22ed2d23634dbc26c8bc910b939, type: 3}
   m_Name: B_Soil_SO
   m_EditorClassIdentifier: Assembly-CSharp::SoilDataSO
-  soilName: BSoil
+  soilName: B Soil
   growthMultiplier: 2
   maxUses: 3
   soilPrefab: {fileID: 4891701877558876670, guid: b4bd4b00cf47e164b847e0d0f714be3d, type: 3}
