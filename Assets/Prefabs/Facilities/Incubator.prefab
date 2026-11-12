@@ -297,11 +297,11 @@ Transform:
   m_GameObject: {fileID: 2851837742135067953}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24007082, z: 0.5062804}
+  m_LocalPosition: {x: 0, y: 3.570071, z: 0.5062794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7546135267441167600}
+  m_Father: {fileID: 7816498723176012727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5096479524654134039
 MeshFilter:
@@ -646,7 +646,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1507,6 +1507,7 @@ Transform:
   m_LocalScale: {x: 0.9627049, y: 0.9508196, z: 0.9508196}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1485602770821217644}
   - {fileID: 7546135267441167600}
   - {fileID: 5771525807869766787}
   - {fileID: 6882499323243026204}
@@ -1551,8 +1552,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 3.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1485602770821217644}
+  m_Children: []
   m_Father: {fileID: 7816498723176012727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7786413735783108923
@@ -1940,6 +1940,7 @@ GameObject:
   - component: {fileID: 6575941164779070970}
   - component: {fileID: 1332002906644736060}
   - component: {fileID: 6841990032568439737}
+  - component: {fileID: 7411721384502187514}
   m_Layer: 0
   m_Name: PlatingArea
   m_TagString: Untagged
@@ -2013,3 +2014,26 @@ MonoBehaviour:
   plantingPoint: {fileID: 421140247032549045}
   waterText: {fileID: 5991440533440479945}
   growthStageText: {fileID: 4919375268276232887}
+--- !u!136 &7411721384502187514
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8816364385922723610}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.14
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: -1.79, z: 0}

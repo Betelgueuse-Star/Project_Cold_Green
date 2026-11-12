@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Oak_Seed_SO
   m_EditorClassIdentifier: Assembly-CSharp::SeedDataSO
   seedName: OakSeed
-  baseGrowthTime: 300
+  baseGrowthTime: 11
   waterTolerance: 2
   recommendedSoil: {fileID: 11400000, guid: ae8179cbcd61e6f4b9bab073783a5e35, type: 2}
   seedRequiredWater: 10

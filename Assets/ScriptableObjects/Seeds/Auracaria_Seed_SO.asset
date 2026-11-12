@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ec5352df57d2246a18bc812fc6594f, type: 3}
+  m_Name: Auracaria_Seed_SO
+  m_EditorClassIdentifier: Assembly-CSharp::SeedDataSO
+  seedName: AuracariaSeed
+  baseGrowthTime: 100
+  waterTolerance: 2
+  recommendedSoil: {fileID: 11400000, guid: 6953746baa99c834cb6f57a8c19cd0f3, type: 2}
+  seedRequiredWater: 10
+  germinatingRequiredWater: 10
+  growingRequiredWater: 10
+  seedPrefab: {fileID: 3833275308282590100, guid: e65c40dbc0cac8049926b4b6ff760cd4, type: 3}
+  germinatingPrefab: {fileID: 4942341748577403456, guid: d80873da68f4aee499f198ddcc7c65c1, type: 3}
+  growingPrefab: {fileID: 4942341748577403456, guid: 78ac8d25fbf355c47985850520c559d1, type: 3}
+  readyPrefab: {fileID: 6208110011841838250, guid: cc0686efbdb06074cb5e07758f5ef9f7, type: 3}
