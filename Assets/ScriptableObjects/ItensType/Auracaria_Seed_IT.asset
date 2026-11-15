@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5685d3592fb34e42adaecd853a27bff, type: 3}
   m_Name: Auracaria_Seed_IT
   m_EditorClassIdentifier: Assembly-CSharp::ItemTypeSO
-  itemPrefab: {fileID: 6208110011841838250, guid: bb12387b6e842ee43badcf9c726b2bb3, type: 3}
+  itemPrefab: {fileID: 7477153064336350014, guid: 0e012da50776830429f941e55ec72162, type: 3}
   itemName: Auracaria Seed
   itemPrice: 0

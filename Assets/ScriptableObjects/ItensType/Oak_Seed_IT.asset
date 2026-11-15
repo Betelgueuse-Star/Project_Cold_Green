@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5685d3592fb34e42adaecd853a27bff, type: 3}
   m_Name: Oak_Seed_IT
   m_EditorClassIdentifier: Assembly-CSharp::ItemTypeSO
-  itemPrefab: {fileID: 6208110011841838250, guid: 500cfd39e86923b4bac29c10595af49c, type: 3}
+  itemPrefab: {fileID: 7477153064336350014, guid: 194f953529b67cd4fa4bd23f41b09bf2, type: 3}
   itemName: Oak Seed
   itemPrice: 0

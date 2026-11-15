@@ -9803,6 +9803,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1296251101}
     - target: {fileID: 7356190866648792451, guid: c6bf0de135cfd3146beb3dcfb3793168, type: 3}
+      propertyPath: currentAmount
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356190866648792451, guid: c6bf0de135cfd3146beb3dcfb3793168, type: 3}
       propertyPath: startingItemType
       value: 
       objectReference: {fileID: 11400000, guid: 0121f904a7ec27645b050eee465500f4, type: 2}
