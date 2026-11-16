@@ -4,8 +4,13 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public event Action<bool> OnCanInteractChanged;
+    public event Action<bool>OnCanInteractChanged;
     public event Action<float> OnThrowChargeChanged;
+
+    // novos: usados pelo PlayerSounds (e depois pelas animações)
+    public event Action OnItemGrabbed;
+    public event Action OnItemDropped;
+    public event Action OnItemThrown;
 
     [Header("Referências")]
     [SerializeField] private Transform cameraTransform;
@@ -126,10 +131,10 @@ public class Player : MonoBehaviour
             return;
 
         float force = CalculateThrowForce();
-
         Vector3 direction = cameraTransform.forward;
 
         objectGrabbable.Throw(direction, force);
+        OnItemThrown?.Invoke(); // novo
 
         objectGrabbable = null;
         throwChargeTime = 0f;
@@ -173,6 +178,7 @@ public class Player : MonoBehaviour
         {
             objectGrabbable.OnDrop();
             objectGrabbable = null;
+            OnItemDropped?.Invoke(); // novo
             return;
         }
 
@@ -181,6 +187,7 @@ public class Player : MonoBehaviour
         {
             currentTool.Drop(toolHoldPointTransform.position, transform.rotation);
             currentTool = null;
+            OnItemDropped?.Invoke(); // novo
         }
     }
 
@@ -189,12 +196,12 @@ public class Player : MonoBehaviour
         if (IsHoldingSomething)
             return;
 
-        // apaga o outline antes de a ferramenta ir para a mão (o collider dela é desligado).
         lastCollider = null;
         HideCurrentOutline();
 
         newTool.Equip(toolHoldPointTransform);
         currentTool = newTool;
+        OnItemGrabbed?.Invoke(); // novo
     }
 
     public void GrabObject(ObjectGrabbable newObjectGrabbable)
@@ -207,6 +214,7 @@ public class Player : MonoBehaviour
 
         objectGrabbable = newObjectGrabbable;
         objectGrabbable.OnGrab(objectGrabPointTransform);
+        OnItemGrabbed?.Invoke(); // novo
     }
 
     public void OnInteract(InputValue value)
