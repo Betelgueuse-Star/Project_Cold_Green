@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public event Action<bool> OnCanInteractChanged;
+    public event Action<float> OnThrowChargeChanged;
 
     [Header("Referências")]
     [SerializeField] private Transform cameraTransform;
@@ -37,9 +38,12 @@ public class Player : MonoBehaviour
     private bool targetIsPickup;        // ObjectGrabbable ou Tool
     private bool targetIsInteractable;  // IInteractable
 
+    private float ThrowChargePercent => Mathf.Clamp01(throwChargeTime / maxChargeTime);
+
     public ToolType CurrentToolType => currentTool != null ? currentTool.Type : ToolType.None;
     public Tool CurrentTool => currentTool;
     public bool IsHoldingSomething => objectGrabbable != null || currentTool != null;
+
 
 
     private void Update()
@@ -57,6 +61,8 @@ public class Player : MonoBehaviour
         {
             throwChargeTime += Time.deltaTime;
             throwChargeTime = Mathf.Min(throwChargeTime, maxChargeTime);
+
+            OnThrowChargeChanged?.Invoke(ThrowChargePercent); //evento para a UI atualizar a barra de arremesso
         }
     }
 
@@ -132,8 +138,6 @@ public class Player : MonoBehaviour
 
     public void OnThrow(InputValue value)
     {
-        Debug.Log($"Throw: {value.isPressed}");
-
         if (objectGrabbable == null || !objectGrabbable.CanBeThrown)
             return;
 
@@ -141,10 +145,13 @@ public class Player : MonoBehaviour
         {
             isChargingThrow = true;
             throwChargeTime = 0f;
+
+            OnThrowChargeChanged?.Invoke(0f);
         }
         else if (isChargingThrow)
         {
             ThrowObject();
+            OnThrowChargeChanged?.Invoke(0f);
         }
     }
 
