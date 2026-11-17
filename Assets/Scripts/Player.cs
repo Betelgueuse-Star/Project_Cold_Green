@@ -90,7 +90,10 @@ public class Player : MonoBehaviour
             Transform t = currentHit.transform;
 
             targetIsPickup = t.TryGetComponent(out ObjectGrabbable _) || t.TryGetComponent(out Tool _);
-            targetIsInteractable = t.TryGetComponent(out IInteractable _);
+
+            // Procura também nos pais, para que colliders filhos (vidro, corpo da incubadora)
+            // repassem a interação para o IInteractable do objeto raiz
+            targetIsInteractable = t.GetComponentInParent<IInteractable>() != null;
 
             HideCurrentOutline();
 
@@ -100,13 +103,6 @@ public class Player : MonoBehaviour
                 currentOutline.Show();
             }
         }
-
-        // Segurando algo, pegar outra coisa não é possível, mas IInteractable ainda é
-        bool pickupAvailable = targetIsPickup && !IsHoldingSomething;
-        SetCanInteract(pickupAvailable || targetIsInteractable);
-
-        if (IsHoldingSomething) // Esonde a outline caso esteja segurando algo
-            HideCurrentOutline();
     }
 
     private void SetCanInteract(bool value)
@@ -236,9 +232,12 @@ public class Player : MonoBehaviour
         {
             GrabTool(tool);
         }
-        else if (target.TryGetComponent(out IInteractable interactable))
+        else
         {
-            interactable.Interact(this);
+            IInteractable interactable = target.GetComponentInParent<IInteractable>();
+
+            if (interactable != null)
+                interactable.Interact(this);
         }
     }
 

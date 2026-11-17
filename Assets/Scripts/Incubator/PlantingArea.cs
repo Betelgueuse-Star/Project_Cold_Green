@@ -1,8 +1,10 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(PlantingAreaVisual))]
 public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractable
 {
+    public event Action<PlantGrowthState> StateChanged;
     private const int GrowthStageCount = 3; //quantidade de estágios com espera (Seed, Germinating e Growing).
 
     private PlantingAreaVisual plantingAVisual;
@@ -186,13 +188,10 @@ public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractab
     {
         currentState = newState;
 
-        plantingAVisual.UpdatePlantVisual(
-            currentState,
-            plantedSeedData,
-            this
-        );
-
+        plantingAVisual.UpdatePlantVisual(currentState, plantedSeedData, this);
         plantingAVisual.UpdateGrowthStageText(currentState);
+
+        StateChanged?.Invoke(currentState);
     }
 
     private WaterStatus CheckWater()
@@ -223,6 +222,9 @@ public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractab
 
         ResetPlantWater();
         plantingAVisual.UpdateGrowthStageText(currentState);
+
+        // KillPlant não passa pelo ChangeState, então avisa aqui também
+        StateChanged?.Invoke(currentState);
     }
 
     private void ResetPlantWater()
