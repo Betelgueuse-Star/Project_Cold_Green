@@ -8,8 +8,10 @@ using UnityEngine.UI;
 // Quem cuida das abas é o TerminalNavigationController.
 public class TerminalModeController : MonoBehaviour
 {
+
     [Header("Player")]
     [SerializeField] private FirstPersonController playerController;
+    [SerializeField] private StarterAssetsInputs playerInputs;
     [SerializeField] private CinemachineCamera playerCamera;
 
     [Header("Terminal")]
@@ -26,9 +28,6 @@ public class TerminalModeController : MonoBehaviour
     // Prioridade da câmera do terminal fora do modo terminal (deve ser menor que a do jogador).
     private int terminalCameraRestPriority;
 
-    private CursorLockMode previousCursorLockState;
-    private bool previousCursorVisibility;
-
     public bool IsInTerminalMode => isInTerminalMode;
 
     private void Awake()
@@ -38,7 +37,8 @@ public class TerminalModeController : MonoBehaviour
             playerCamera != null &&
             terminalCamera != null &&
             screenRaycaster != null &&
-            navigationController != null;
+            navigationController != null &&
+             playerInputs != null;
 
         if (!isConfigured)
         {
@@ -60,9 +60,6 @@ public class TerminalModeController : MonoBehaviour
 
         isInTerminalMode = true;
 
-        previousCursorLockState = Cursor.lockState;
-        previousCursorVisibility = Cursor.visible;
-
         playerController.SetControlsEnabled(false);
 
         // O CinemachineBrain faz o blend até a câmera do monitor.
@@ -71,8 +68,7 @@ public class TerminalModeController : MonoBehaviour
         navigationController.EnterNavigation();
         screenRaycaster.enabled = true;
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        playerInputs.SetCursorLocked(false);
     }
 
     public void ExitTerminalMode()
@@ -89,7 +85,6 @@ public class TerminalModeController : MonoBehaviour
 
         playerController.SetControlsEnabled(true);
 
-        Cursor.lockState = previousCursorLockState;
-        Cursor.visible = previousCursorVisibility;
+        playerInputs.SetCursorLocked(true);
     }
 }
