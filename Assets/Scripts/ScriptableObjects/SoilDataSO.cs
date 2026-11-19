@@ -13,5 +13,8 @@ public class SoilDataSO : ScriptableObject
 
     [Header("SoilPrefab")]
     public GameObject soilPrefab;
-    
+
+    [Header("SoilSeedPrefab")]
+    public GameObject soilSeedPrefab;
+
 }

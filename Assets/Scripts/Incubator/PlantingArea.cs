@@ -59,11 +59,18 @@ public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractab
         }
     }
 
+    // Centraliza a atualização do visual do solo. Sempre que o estado ou o solo
+    // mudar, chama este método para o visual refletir a situação atual.
+    private void RefreshSoilVisual()
+    {
+        plantingAVisual.UpdateSoilVisual(soilPlacedData, currentState);
+    }
+
+
     public void PlaceSoil(SoilDataSO soilData)
     {
         soilPlacedData = soilData;
-
-        plantingAVisual.UpdateSoilVisual(soilPlacedData);
+        RefreshSoilVisual();
     }
 
     public void PlantSeed(SeedDataSO seedData)
@@ -189,6 +196,7 @@ public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractab
         currentState = newState;
 
         plantingAVisual.UpdatePlantVisual(currentState, plantedSeedData, this);
+        RefreshSoilVisual(); // novo: o solo troca para "com semente" no estado Seed
         plantingAVisual.UpdateGrowthStageText(currentState);
 
         StateChanged?.Invoke(currentState);
@@ -219,6 +227,8 @@ public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractab
         fertilizerPlacedData = null;
         plantedSeedData = null;
         currentState = PlantGrowthState.Empty;
+
+        RefreshSoilVisual(); // volta para o solo normal
 
         ResetPlantWater();
         plantingAVisual.UpdateGrowthStageText(currentState);

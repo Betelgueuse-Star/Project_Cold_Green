@@ -44,14 +44,20 @@ public class PlantingAreaVisual : MonoBehaviour
         growthStageText.text = $"Estágio: {currentState}";
     }
 
-    public void UpdateSoilVisual(SoilDataSO soilData)
+    public void UpdateSoilVisual(SoilDataSO soilData, PlantGrowthState currentState)
     {
         DestroyAndClear(ref currentSoilVisual);
 
-        if (soilData != null && soilData.soilPrefab != null)
-        {
-            currentSoilVisual = SpawnAtPoint(soilData.soilPrefab);
-        }
+        if (soilData == null) return;
+
+        // Só no estado Seed usa o solo elevado (com semente); nos outros, o solo normal.
+        GameObject prefab = currentState == PlantGrowthState.Seed
+            ? soilData.soilSeedPrefab
+            : soilData.soilPrefab;
+
+        if (prefab == null) return;
+
+        currentSoilVisual = SpawnAtPoint(prefab);
     }
 
     public void UpdatePlantVisual(PlantGrowthState currentState, SeedDataSO plantedSeedData, PlantingArea plantingArea)

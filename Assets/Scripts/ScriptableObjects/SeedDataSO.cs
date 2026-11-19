@@ -21,7 +21,6 @@ public class SeedDataSO : ScriptableObject
     public float growingRequiredWater = 10f;
 
     [Header("Estágios Visuais")]
-    public GameObject seedModel;
     public GameObject germinatingModel;
     public GameObject growingModel;
 
@@ -37,9 +36,6 @@ public class SeedDataSO : ScriptableObject
     {
         switch (state)
         {
-            case PlantGrowthState.Seed:
-                return seedModel;
-
             case PlantGrowthState.Germinating:
                 return germinatingModel;
 
