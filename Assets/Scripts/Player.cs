@@ -137,6 +137,13 @@ public class Player : MonoBehaviour
         isChargingThrow = false;
     }
 
+    public void OnPause(InputValue value)
+    {
+        if (!value.isPressed)
+            return;
+        GameManager.Instance.TogglePause();
+    }
+
     public void OnThrow(InputValue value)
     {
         if (objectGrabbable == null || !objectGrabbable.CanBeThrown)
