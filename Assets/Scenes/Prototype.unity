@@ -15432,7 +15432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 824076838396920447}
   - component: {fileID: 7108180466246099012}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: OakSapling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
