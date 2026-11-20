@@ -101,6 +101,11 @@ public class Player : MonoBehaviour
             {
                 currentOutline = outline;
                 currentOutline.Show();
+                SetCanInteract(targetIsInteractable || targetIsPickup);
+            }
+            else
+            {
+                SetCanInteract(false);
             }
         }
     }
