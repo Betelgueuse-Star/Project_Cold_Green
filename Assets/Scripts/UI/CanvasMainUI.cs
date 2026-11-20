@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class CanvasUI : MonoBehaviour
+public class CanvasMainUI : MonoBehaviour
 {
     // General Canvas UI controller
 

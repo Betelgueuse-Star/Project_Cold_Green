@@ -2,12 +2,15 @@ using StarterAssets;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 // Entra e sai do modo terminal: trava o jogador, troca para a câmera do monitor,
 // libera o cursor e liga os cliques do Canvas do monitor.
 // Quem cuida das abas é o TerminalNavigationController.
 public class TerminalModeController : MonoBehaviour
 {
+    public event Action OnTerminalEntered;
+    public event Action OnTerminalExited;
 
     [Header("Player")]
     [SerializeField] private FirstPersonController playerController;
@@ -69,6 +72,8 @@ public class TerminalModeController : MonoBehaviour
         screenRaycaster.enabled = true;
 
         playerInputs.SetCursorLocked(false);
+
+        OnTerminalEntered?.Invoke(); //evento
     }
 
     public void ExitTerminalMode()
@@ -86,5 +91,7 @@ public class TerminalModeController : MonoBehaviour
         playerController.SetControlsEnabled(true);
 
         playerInputs.SetCursorLocked(true);
+
+        OnTerminalExited?.Invoke(); // evento
     }
 }

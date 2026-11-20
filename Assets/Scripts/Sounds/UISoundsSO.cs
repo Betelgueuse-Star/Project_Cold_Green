@@ -4,7 +4,7 @@ using UnityEngine;
 public class UISoundsSO : ScriptableObject
 {
     public SoundSO click;
-    public SoundSO blocked;
+    public SoundSO actionBlocked;
     public SoundSO hover;
     public SoundSO confirm;
 }

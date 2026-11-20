@@ -1,7 +1,12 @@
+using System;
 using UnityEngine;
 
 public class Terminal : MonoBehaviour, IInteractable
 {
+    public event Action<ItemTypeSO> OnItemPurchased;
+    public event Action OnPurchaseBlocked;        // sem dinheiro
+    public event Action OnWaterUpgradePurchased;
+
     [Header("Terminal")]
     [SerializeField] private TerminalModeController terminalModeController;
     [SerializeField] private CurrencyManager currencyManager;
@@ -67,10 +72,16 @@ public class Terminal : MonoBehaviour, IInteractable
         if (!shoppingCart.IsReady)
             return;
 
+        // sem dinehiro
         if (!currencyManager.TrySpendCurrency(item.ItemPrice))
+        {
+            OnPurchaseBlocked?.Invoke(); // evento
             return;
+        }
 
         shoppingCart.Enqueue(item);
+
+        OnItemPurchased?.Invoke(item); // evento
     }
 
     // Compra o próximo nível de upgrade do abastecimento de água.
@@ -87,11 +98,13 @@ public class Terminal : MonoBehaviour, IInteractable
         // para nunca cobrar por um upgrade que não pode ser aplicado.
         if (!currencyManager.TrySpendCurrency(nextLevelData.cost))
         {
-            // FUTURO: feedback de "dinheiro insuficiente" (som, mensagem no monitor).
+            OnPurchaseBlocked?.Invoke(); //(aqui também vai a mensagem no monitor, no futuro)
             return;
         }
 
         waterTank.SetUpgradeLevel(waterTank.CurrentLevel + 1);
+
+        OnWaterUpgradePurchased?.Invoke();
     }
 
     public void Interact(Player player)

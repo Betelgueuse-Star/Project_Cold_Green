@@ -5,6 +5,8 @@ using System;
 public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractable
 {
     public event Action<PlantGrowthState> StateChanged;
+    public event Action PlantHarvested;
+
     private const int GrowthStageCount = 3; //quantidade de estágios com espera (Seed, Germinating e Growing).
 
     private PlantingAreaVisual plantingAVisual;
@@ -250,6 +252,7 @@ public class PlantingArea : MonoBehaviour, IInteractable, IConditionalInteractab
         plantingAVisual.RemovePlantVisual();
 
         KillPlant();
+        PlantHarvested?.Invoke(); // evento
 
         Debug.Log("Planta removida. Área disponível novamente.");
     }

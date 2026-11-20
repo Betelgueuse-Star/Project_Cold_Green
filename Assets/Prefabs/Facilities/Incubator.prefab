@@ -1175,7 +1175,8 @@ GameObject:
   - component: {fileID: 3583667571979586054}
   - component: {fileID: 8186700420199653219}
   - component: {fileID: 1853764273003882407}
-  m_Layer: 0
+  - component: {fileID: 3616014300204379417}
+  m_Layer: 2
   m_Name: Incubator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1268,6 +1269,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a82a627546f70a4e95fceb8b73a6f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlantingArea
+--- !u!114 &3616014300204379417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5218019814124498260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a12a8f3df9f80b48b3a3c2db9d7d704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlantingAreaAudio
+  plantingArea: {fileID: 1853764273003882407}
+  plantSound: {fileID: 11400000, guid: 74ae7c8dee1c222458c194c63aa6c3f1, type: 2}
+  growSound: {fileID: 11400000, guid: 0f12e7c1f6941134e95b667f3c7e2d1f, type: 2}
+  readySound: {fileID: 11400000, guid: aaebf138301444544a3f4d9b7301d35f, type: 2}
+  harvestSound: {fileID: 11400000, guid: 4347b7155c91df144bb8b93f4376cbe9, type: 2}
+  runningLoop: {fileID: 0}
 --- !u!1 &5347480791549163197
 GameObject:
   m_ObjectHideFlags: 0

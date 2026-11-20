@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Fertilizer_SO
   m_EditorClassIdentifier: Assembly-CSharp::FertilizerDataSO
   fertilizerName: Fertilizer
-  growthMultiplier: 1.25
+  growthMultiplier: 1.4
   fertilizerParticle: {fileID: 212640160701852078, guid: 85a96f938d24533408a4db9022db068f, type: 3}
