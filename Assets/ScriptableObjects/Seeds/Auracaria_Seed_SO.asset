@@ -19,7 +19,6 @@ MonoBehaviour:
   seedRequiredWater: 10
   germinatingRequiredWater: 10
   growingRequiredWater: 10
-  seedModel: {fileID: 6208110011841838250, guid: 732c9d7396f546249b11d736ca17922d, type: 3}
   germinatingModel: {fileID: 3833275308282590100, guid: e65c40dbc0cac8049926b4b6ff760cd4, type: 3}
-  growingModel: {fileID: 4942341748577403456, guid: d80873da68f4aee499f198ddcc7c65c1, type: 3}
+  growingModel: {fileID: 5654609077250946110, guid: 866f9223946a1334e810f35d87620c7c, type: 3}
   saplingPrefab: {fileID: 6208110011841838250, guid: cc0686efbdb06074cb5e07758f5ef9f7, type: 3}
