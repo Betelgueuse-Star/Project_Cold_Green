@@ -21,6 +21,10 @@ public class WaterTank : MonoBehaviour, IInteractable, IConditionalInteractable
     [SerializeField] private float maxWater = 100f;
     [SerializeField] private float currentWater;
 
+    [Header("Visual")]
+    // Objeto que representa a água dentro do tanque. A escala Y dele vai de 0 (vazio) a 1 (cheio).
+    [SerializeField] private Transform waterVisual;
+
     [Header("Upgrades (índice 0 = nível inicial)")]
     [SerializeField] private WaterUpgradeLevel[] upgradeLevels;
     [SerializeField] private int currentLevel;
@@ -54,6 +58,11 @@ public class WaterTank : MonoBehaviour, IInteractable, IConditionalInteractable
 
         if (!HasLevels)
             Debug.LogWarning($"{name}: nenhum nível de upgrade configurado, o tanque não vai reabastecer.", this);
+
+        if (waterVisual == null)
+            Debug.LogWarning($"{name}: waterVisual não configurado, o nível de água não será exibido.", this);
+
+        UpdateWaterVisual();
     }
 
     private void OnValidate()
@@ -73,6 +82,10 @@ public class WaterTank : MonoBehaviour, IInteractable, IConditionalInteractable
         float fillRate = upgradeLevels[currentLevel].fillRatePerSecond;
         currentWater = Mathf.Min(currentWater + fillRate * Time.deltaTime, maxWater);
 
+        // o visual é atualizado todo frame (só mexe na escala, é barato),
+        // assim a água sobe de forma suave e não aos "pulos" de 1 em 1.
+        UpdateWaterVisual();
+
         // só avisa quando o inteiro mudou OU quando acabou de encher.
         if (Mathf.FloorToInt(currentWater) != lastNotifiedWater || currentWater >= maxWater)
             NotifyWaterChanged();
@@ -86,9 +99,24 @@ public class WaterTank : MonoBehaviour, IInteractable, IConditionalInteractable
             return 0f;
 
         currentWater -= waterTaken;
+        UpdateWaterVisual();
         NotifyWaterChanged();
 
         return waterTaken;
+    }
+
+    // Ajusta a escala Y do objeto de água: 0 de água = escala 0, água máxima = escala 1.
+    // X e Z são mantidos como estão no objeto.
+    private void UpdateWaterVisual()
+    {
+        if (waterVisual == null)
+            return;
+
+        float fill = maxWater > 0f ? currentWater / maxWater : 0f;
+
+        Vector3 scale = waterVisual.localScale;
+        scale.y = Mathf.Clamp01(fill);
+        waterVisual.localScale = scale;
     }
 
     // único lugar que dispara OnWaterChanged.
