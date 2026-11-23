@@ -18,6 +18,13 @@ namespace ITISKIRUHERE
             SilhouetteOnly
         }
 
+        public enum TargetMode
+        {
+            AllChildren,        // todos os renderers deste objeto e dos filhos (comportamento atual)
+            ThisObjectOnly,     // só o Renderer que está no mesmo GameObject do script
+            SpecificRenderers   // só os renderers que você arrastar na lista
+        }
+
         [Serializable]
         class ListVector3
         {
@@ -27,6 +34,12 @@ namespace ITISKIRUHERE
         [Header("References")]
         [SerializeField] Shader _outlineMaskShader;
         [SerializeField] Shader _outlineFillShader;
+
+        [Header("Target")]
+        [SerializeField] TargetMode _targetMode = TargetMode.AllChildren;
+        [Tooltip("Usado só no modo SpecificRenderers. Ex.: tronco e galhos (sem as folhas).")]
+        [SerializeField] Renderer[] _targetRenderers;
+
 
         [Header("General Settings")]
         [SerializeField] Mode _outlineMode = Mode.OutlineVisible;
@@ -60,6 +73,8 @@ namespace ITISKIRUHERE
         Material _outlineMaskMaterial;
         Material _outlineFillMaterial;
         MaterialPropertyBlock _propertyBlock;
+
+        bool _needsRefresh;
 
         bool _needsUpdate;
         
@@ -190,6 +205,11 @@ namespace ITISKIRUHERE
 
         void Update()
         {
+            if (_needsRefresh)
+            {
+                _needsRefresh = false;
+                RefreshRenderers();
+            }
             if ( _needsUpdate )
             {
                 _needsUpdate = false;
@@ -202,6 +222,7 @@ namespace ITISKIRUHERE
         void OnValidate()
         {
             _needsUpdate = true;
+            _needsRefresh = true;
             InitializeMaterials();
 
             if ( _pulseMinWidth > _pulseMaxWidth )
@@ -233,8 +254,9 @@ namespace ITISKIRUHERE
 
         public void RefreshRenderers()
         {
-            CacheComponents();
-            CleanAllOutlineMaterialsFromRenderers();
+            CleanAllOutlineMaterialsFromRenderers(); // limpa a lista ANTIGA
+            ClearClonedMeshes();                     // devolve os meshes originais
+            CacheComponents();                       // monta a lista NOVA
             LoadSmoothNormals();
             ApplyMaterialsToRenderers();
             _needsUpdate = true;
@@ -242,9 +264,32 @@ namespace ITISKIRUHERE
 
         void CacheComponents()
         {
-            _renderers = GetComponentsInChildren<Renderer>();
-            _meshFilters = GetComponentsInChildren<MeshFilter>();
-            _skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+            switch (_targetMode)
+            {
+                case TargetMode.ThisObjectOnly:
+                    Renderer self = GetComponent<Renderer>();
+                    _renderers = self ? new[] { self } : new Renderer[0];
+                    break;
+
+                case TargetMode.SpecificRenderers:
+                    _renderers = _targetRenderers == null
+                        ? new Renderer[0]
+                        : _targetRenderers.Where(r => r).Distinct().ToArray();
+                    break;
+
+                default: // AllChildren
+                    _renderers = GetComponentsInChildren<Renderer>();
+                    break;
+            }
+
+            // MeshFilters e SkinnedMeshRenderers derivam da lista final,
+            // senão LoadSmoothNormals mexeria em meshes que não vão ter outline
+            _meshFilters = _renderers
+                .Select(r => r.GetComponent<MeshFilter>())
+                .Where(m => m)
+                .ToArray();
+
+            _skinnedMeshRenderers = _renderers.OfType<SkinnedMeshRenderer>().ToArray();
         }
 
         void CachePropertyIDs()
@@ -638,17 +683,26 @@ namespace ITISKIRUHERE
             _clonedSkinnedMeshes.Clear();
         }
 
-        void DestroyOutlineObject( UnityEngine.Object obj )
+        void DestroyOutlineObject(UnityEngine.Object obj)
         {
-            if ( !obj ) return;
-            if ( Application.isPlaying )
+            if (!obj) return;
+            if (Application.isPlaying)
             {
-                Destroy( obj );
+                Destroy(obj);
             }
             else
             {
-                DestroyImmediate( obj );
+                DestroyImmediate(obj);
             }
         }
+
+        // usa os target renderes, da pra alterar em runtime, mas tem que chamar RefreshRenderers() depois
+        public void SetTargetRenderers(params Renderer[] renderers)
+        {
+            _targetMode = TargetMode.SpecificRenderers;
+            _targetRenderers = renderers;
+            RefreshRenderers();
+        }
     }
+
 }

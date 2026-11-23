@@ -7,6 +7,9 @@ namespace ITISKIRUHERE
     [CanEditMultipleObjects]
     public class AdvancedOutlineEditor : Editor
     {
+        static readonly GUIContent _targetModeLabel = new GUIContent("Target Mode", "AllChildren: todos os renderers do objeto e filhos. ThisObjectOnly: só o renderer deste GameObject. SpecificRenderers: só os da lista.");
+        static readonly GUIContent _targetRenderersLabel = new GUIContent("Target Renderers", "Renderers que receberão outline (ex.: tronco e galhos, sem as folhas).");
+
         static readonly GUIContent _outlineMaskShaderLabel = new GUIContent( "Mask Shader", "Shader used for masking the outline silhouette." );
         static readonly GUIContent _outlineFillShaderLabel = new GUIContent( "Fill Shader", "Shader used for rendering the outline stroke." );
         static readonly GUIContent _outlineModeLabel = new GUIContent( "Outline Mode", "Select where and how the outline should be rendered relative to depth." );
@@ -26,7 +29,8 @@ namespace ITISKIRUHERE
         static readonly GUIContent _dashSpeedLabel = new GUIContent( "Dash Speed", "Speed of the crawling dash movement." );
         
         static readonly GUIContent _precomputeOutlineLabel = new GUIContent( "Precompute Outline", "Precompute smooth normals in the editor to avoid Awake() calculations at runtime." );
-
+        SerializedProperty _targetMode;
+        SerializedProperty _targetRenderers;
         SerializedProperty _outlineMaskShader;
         SerializedProperty _outlineFillShader;
         SerializedProperty _outlineMode;
@@ -49,6 +53,8 @@ namespace ITISKIRUHERE
 
         void OnEnable()
         {
+            _targetMode = serializedObject.FindProperty("_targetMode");
+            _targetRenderers = serializedObject.FindProperty("_targetRenderers");   
             _outlineMaskShader = serializedObject.FindProperty( "_outlineMaskShader" );
             _outlineFillShader = serializedObject.FindProperty( "_outlineFillShader" );
             _outlineMode = serializedObject.FindProperty( "_outlineMode" );
@@ -87,6 +93,17 @@ namespace ITISKIRUHERE
                 
                 EditorGUILayout.PropertyField( _outlineMaskShader, _outlineMaskShaderLabel );
                 EditorGUILayout.PropertyField( _outlineFillShader, _outlineFillShaderLabel );
+                EditorGUILayout.Space();
+
+                EditorGUILayout.PropertyField(_targetMode, _targetModeLabel);
+
+                if (_targetMode.enumValueIndex == (int)AdvancedOutline.TargetMode.SpecificRenderers)
+                {
+                    EditorGUI.indentLevel++;
+                    EditorGUILayout.PropertyField(_targetRenderers, _targetRenderersLabel, true);
+                    EditorGUI.indentLevel--;
+                }
+
                 EditorGUILayout.Space();
 
                 EditorGUILayout.PropertyField( _outlineMode, _outlineModeLabel );

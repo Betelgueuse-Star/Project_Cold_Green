@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5821087031141363862}
   - component: {fileID: 5694532599666526875}
   m_Layer: 0
-  m_Name: Plant.009
+  m_Name: G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 3520561924861260764}
   - component: {fileID: 536338540861369662}
   m_Layer: 0
-  m_Name: Plant.011
+  m_Name: G1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,6 +399,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ITISKIRUHERE.AdvancedOutline
   _outlineMaskShader: {fileID: 4800000, guid: c2f5089722420f44ea03b3dbb08dca7e, type: 3}
   _outlineFillShader: {fileID: 4800000, guid: 6cdd088550bc7e6478ae291e0e83fabb, type: 3}
+  _targetMode: 2
+  _targetRenderers:
+  - {fileID: 5694532599666526875}
+  - {fileID: 536338540861369662}
   _outlineMode: 1
   _outlineColor: {r: 1, g: 1, b: 1, a: 1}
   _outlineWidth: 4

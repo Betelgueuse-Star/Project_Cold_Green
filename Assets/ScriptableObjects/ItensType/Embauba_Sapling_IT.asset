@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5685d3592fb34e42adaecd853a27bff, type: 3}
-  m_Name: B_Sapling_IT
+  m_Name: Embauba_Sapling_IT
   m_EditorClassIdentifier: Assembly-CSharp::ItemTypeSO
-  itemPrefab: {fileID: 6208110011841838250, guid: 58a5da4d0db52264d88b05831c923f95, type: 3}
-  itemName: B Sapling
+  itemPrefab: {fileID: 4456557257182930228, guid: 6466b388282c2d643a22d4ea98dc0a99, type: 3}
+  itemName: Embauba Sapling
   itemPrice: 1
