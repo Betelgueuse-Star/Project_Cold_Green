@@ -73,6 +73,18 @@ public class Elevator : MonoBehaviour
         UpdatePositionState();
     }
 
+    public void MoveBoth()
+    {
+        if (State != ElevatorState.Bottom)
+        {
+            MoveDown();
+        }
+        else if (State != ElevatorState.Top)
+        {
+            MoveUp();
+        }
+    }
+
     public void MoveUp()
     {
         MoveTo(topPoint, ElevatorState.Top);
