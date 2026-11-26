@@ -162,7 +162,7 @@ public class ShoppingCart : MonoBehaviour
         if (!isConfigured || !isActiveAndEnabled)
             return;
 
-        if (deliveryCoroutine != null || pendingItems.Count == 0 || !elevator.IsAtTop)
+        if (deliveryCoroutine != null || pendingItems.Count == 0 )//|| !elevator.IsAtTop
             return;
 
         deliveryCoroutine = StartCoroutine(DeliveryRoutine());
@@ -175,7 +175,7 @@ public class ShoppingCart : MonoBehaviour
     {
         WaitForSeconds wait = new WaitForSeconds(spawnInterval);
 
-        while (pendingItems.Count > 0 && elevator.IsAtTop)
+        while (pendingItems.Count > 0 )//&& elevator.IsAtTop
         {
             ItemTypeSO item = pendingItems.Dequeue();
             OnCartChanged?.Invoke();
