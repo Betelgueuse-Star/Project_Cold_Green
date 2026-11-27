@@ -75,7 +75,7 @@ public class Elevator : MonoBehaviour
 
     public void MoveBoth()
     {
-        if (State != ElevatorState.Bottom)
+        if (State != ElevatorState.Bottom )
         {
             MoveDown();
         }

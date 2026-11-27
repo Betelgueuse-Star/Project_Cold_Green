@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5685d3592fb34e42adaecd853a27bff, type: 3}
-  m_Name: B_SoilBag_IT
+  m_Name: EmBauba_SoilBag_IT
   m_EditorClassIdentifier: Assembly-CSharp::ItemTypeSO
   itemPrefab: {fileID: 6208110011841838250, guid: 62c23304ce25f774db2fcc72bf899f81, type: 3}
-  itemName: B SoilBag
+  itemName: Embauba SoilBag
   itemPrice: 5

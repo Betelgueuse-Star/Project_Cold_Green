@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6208110011841838250
+--- !u!1 &1309547450338330497
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 824076837697810924}
-  - component: {fileID: 7011881958110335058}
-  - component: {fileID: 9085545261314268408}
-  - component: {fileID: 2053757061341105634}
-  - component: {fileID: 5929700184171359820}
-  - component: {fileID: 6204537304855796903}
-  - component: {fileID: 2928312962458977403}
-  - component: {fileID: -4020095795740376555}
-  - component: {fileID: 5409535400754716697}
-  m_Layer: 7
-  m_Name: B_SoilBag
+  - component: {fileID: 1830610836563893563}
+  - component: {fileID: 3371077697493013150}
+  - component: {fileID: 661059410180761172}
+  m_Layer: 0
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &824076837697810924
+--- !u!4 &1830610836563893563
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6208110011841838250}
+  m_GameObject: {fileID: 1309547450338330497}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.1}
+  m_LocalPosition: {x: 0, y: -0.35343, z: -0.000000043327}
+  m_LocalScale: {x: 3.1003983, y: 3.1003983, z: 11.676721}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 824076837697810924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7011881958110335058
+--- !u!33 &3371077697493013150
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6208110011841838250}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9085545261314268408
+  m_GameObject: {fileID: 1309547450338330497}
+  m_Mesh: {fileID: 6329158148709259305, guid: a07666d26a899a44982e49d5b97be574, type: 3}
+--- !u!23 &661059410180761172
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6208110011841838250}
+  m_GameObject: {fileID: 1309547450338330497}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -72,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3562e43168147394090a35db77f7ac20, type: 2}
+  - {fileID: 2100000, guid: 64559e480731665449dcd3bf80826c3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +90,45 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2053757061341105634
+--- !u!1 &6208110011841838250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824076837697810924}
+  - component: {fileID: 2926762376409541295}
+  - component: {fileID: 5929700184171359820}
+  - component: {fileID: 6204537304855796903}
+  - component: {fileID: 2928312962458977403}
+  - component: {fileID: -4020095795740376555}
+  - component: {fileID: 5409535400754716697}
+  m_Layer: 7
+  m_Name: Embauba_SoilBag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &824076837697810924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208110011841838250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1830610836563893563}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2926762376409541295
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,8 +147,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9, y: 0.94, z: 1.43}
+  m_Center: {x: 0, y: 0.1682645, z: 0.0000000037252903}
 --- !u!54 &5929700184171359820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac842d1d9db06045939631f9bb32971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectGrabbable
+  canBeThrown: 1
 --- !u!114 &2928312962458977403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ITISKIRUHERE.AdvancedOutline
   _outlineMaskShader: {fileID: 4800000, guid: c2f5089722420f44ea03b3dbb08dca7e, type: 3}
   _outlineFillShader: {fileID: 4800000, guid: 6cdd088550bc7e6478ae291e0e83fabb, type: 3}
+  _targetMode: 0
+  _targetRenderers: []
   _outlineMode: 1
   _outlineColor: {r: 1, g: 1, b: 1, a: 1}
   _outlineWidth: 4
